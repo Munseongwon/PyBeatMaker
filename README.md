@@ -6,4 +6,3 @@
 2. 비트선택
 ![비트 선택](https://user-images.githubusercontent.com/96816327/174816590-f3a9403d-ffca-4f78-9e5d-68a4c0b01f7f.PNG)
 
-3. 
