@@ -1,5 +1,5 @@
 # PyBeatMaker
-### Let's Breakout the block!!!
+### We are becoming Beat Maker like Music Youtuber!!
 <img src="whole_screen.png" alt="Intro Screen" width="1280px" height="400px">
 
 ## 프로젝트 요약
