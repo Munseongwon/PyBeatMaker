@@ -1,6 +1,6 @@
 # PyBeatMaker
 ### Let's Breakout the block!!!
-<img src="start.png" alt="Intro Screen" width="200px" height="400px"><img src="playing.png" alt="game playing" width="200px" height="400px"><img src="game_over.png" alt="Game_Over Screen" width="200px" height="400px">
+<img src="whole_screen.png" alt="Intro Screen" width="1280px" height="400px">
 
 ## 프로젝트 요약
 ![Langauge:Python](https://img.shields.io/badge/Language-Python-purple) ![platform:PyGame](https://img.shields.io/badge/Platform-PyGame-pink)
