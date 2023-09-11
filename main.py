@@ -1,7 +1,10 @@
 import pygame
 from pygame import mixer
+
+# Pygame Initialization
 pygame.init()
 
+# Touch Pad Settings
 black = (0, 0, 0)
 white = (255, 255, 255)
 gray = (128, 128, 128)
@@ -17,14 +20,6 @@ active_length = 0
 active_beat = 0
 
 # sounds
-'''
-hi_hat = mixer.Sound('sounds\kit2\hi hat.wav')
-snare = mixer.Sound('sounds\kit2\snare.wav')
-kick = mixer.Sound('sounds\kit2\kick.wav')
-crash = mixer.Sound('sounds\kit2\crash.wav')
-clap = mixer.Sound('sounds\kit2\clap.wav')
-tom = mixer.Sound("sounds\kit2\\tom.wav")
-'''
 hi_hat = mixer.Sound('sounds\\hi hat.wav')
 snare = mixer.Sound('sounds\\snare.wav')
 kick = mixer.Sound('sounds\\kick.wav')
@@ -32,6 +27,7 @@ crash = mixer.Sound('sounds\\crash.wav')
 clap = mixer.Sound('sounds\\clap.wav')
 tom = mixer.Sound("sounds\\tom.wav")
 
+# First Game Environment Setting
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('The Beat Maker')
 label_font = pygame.font.Font('Roboto-Bold.ttf', 32)
@@ -57,6 +53,7 @@ typing = False
 index = 100
 
 
+# If you click the beat button, the button's color change from grey to green
 def draw_grid(clicks, beat, actives):
     boxes = []
     left_box = pygame.draw.rect(screen, gray, [0, 0, 200, HEIGHT - 200], 5)
@@ -85,21 +82,15 @@ def draw_grid(clicks, beat, actives):
                     color = green
                 else:
                     color = dark_gray
-            rect = pygame.draw.rect(screen, color,
-                                    [i * ((WIDTH - 200) // beats) + 205, (j * 100) + 5, ((WIDTH - 200) // beats) - 10,
-                                     90], 0, 3)
-            pygame.draw.rect(screen, gold, [i * ((WIDTH - 200) // beats) + 200, j * 100, ((WIDTH - 200) // beats), 100],
-                             5, 5)
-            pygame.draw.rect(screen, black,
-                             [i * ((WIDTH - 200) // beats) + 200, j * 100, ((WIDTH - 200) // beats), 100],
-                             2, 5)
+            rect = pygame.draw.rect(screen, color, [i * ((WIDTH - 200) // beats) + 205, (j * 100) + 5, ((WIDTH - 200) // beats) - 10, 90], 0, 3)
+            pygame.draw.rect(screen, gold, [i * ((WIDTH - 200) // beats) + 200, j * 100, ((WIDTH - 200) // beats), 100], 5, 5)
+            pygame.draw.rect(screen, black, [i * ((WIDTH - 200) // beats) + 200, j * 100, ((WIDTH - 200) // beats), 100], 2, 5)
             boxes.append((rect, (i, j)))
-    active = pygame.draw.rect(screen, blue,
-                              [beat * ((WIDTH - 200) // beats) + 200, 0, ((WIDTH - 200) // beats), instruments * 100],
-                              5, 3)
+    active = pygame.draw.rect(screen, blue, [beat * ((WIDTH - 200) // beats) + 200, 0, ((WIDTH - 200) // beats), instruments * 100], 5, 3)
     return boxes
 
 
+# Playing the beat
 def play_notes():
     for i in range(len(clicked)):
         if clicked[i][active_beat] == 1 and active_list[i] == 1:
@@ -117,16 +108,17 @@ def play_notes():
                 tom.play()
 
 
+# Save your beat
 def draw_save_menu(beat_name, typing):
     pygame.draw.rect(screen, black, [0, 0, WIDTH, HEIGHT])
     menu_text = label_font.render('Save Menu: Enter a Name for this beat', True, white)
     screen.blit(menu_text, (400, 40))
-    exit_btn = pygame.draw.rect(screen, gray, [WIDTH - 200, HEIGHT - 100, 180, 90], 0, 5)
+    exit_btn = pygame.draw.rect(screen, gray, [WIDTH // 2 + 100, HEIGHT * 0.75, 200, 100], 0, 5)
     exit_text = label_font.render('Close', True, white)
-    screen.blit(exit_text, (WIDTH - 160, HEIGHT - 70))
-    saving_btn = pygame.draw.rect(screen, gray, [WIDTH // 2 - 100, HEIGHT * 0.75, 200, 100], 0, 5)
+    screen.blit(exit_text, (WIDTH // 2 + 150, HEIGHT * 0.75 + 30))
+    saving_btn = pygame.draw.rect(screen, gray, [WIDTH // 2 - 300, HEIGHT * 0.75, 200, 100], 0, 5)
     saving_text = label_font.render('Save Beat', True, white)
-    screen.blit(saving_text, (WIDTH // 2 - 70, HEIGHT * 0.75 + 30))
+    screen.blit(saving_text, (WIDTH // 2 - 280, HEIGHT * 0.75 + 30))
     if typing:
         pygame.draw.rect(screen, dark_gray, [400, 200, 600, 200], 0, 5)
     entry_rect = pygame.draw.rect(screen, gray, [400, 200, 600, 200], 5, 5)
@@ -135,6 +127,7 @@ def draw_save_menu(beat_name, typing):
     return exit_btn, saving_btn, beat_name, entry_rect
 
 
+# Load your beat on the screen
 def draw_load_menu(index):
     loaded_clicked = []
     loaded_beats = 0
@@ -142,9 +135,9 @@ def draw_load_menu(index):
     pygame.draw.rect(screen, black, [0, 0, WIDTH, HEIGHT])
     menu_text = label_font.render('Load Menu: Select a beat to load in', True, white)
     screen.blit(menu_text, (400, 40))
-    exit_btn = pygame.draw.rect(screen, gray, [WIDTH - 200, HEIGHT - 100, 180, 90], 0, 5)
+    exit_btn = pygame.draw.rect(screen, gray, [WIDTH // 2 + 200, HEIGHT * 0.87, 200, 100], 0, 5)
     exit_text = label_font.render('Close', True, white)
-    screen.blit(exit_text, (WIDTH - 160, HEIGHT - 70))
+    screen.blit(exit_text, (WIDTH // 2 + 252, HEIGHT * 0.87 + 30))
     loading_btn = pygame.draw.rect(screen, gray, [WIDTH // 2 - 100, HEIGHT * 0.87, 200, 100], 0, 5)
     loading_text = label_font.render('Load Beat', True, white)
     screen.blit(loading_text, (WIDTH // 2 - 70, HEIGHT * 0.87 + 30))
@@ -152,16 +145,17 @@ def draw_load_menu(index):
     delete_text = label_font.render('Delete Beat', True, white)
     screen.blit(delete_text, (WIDTH // 2 - 385, HEIGHT * 0.87 + 30))
     if 0 <= index < len(saved_beats):
-        pygame.draw.rect(screen, light_gray, [190, 100 + index*50, 1000, 50])
+        pygame.draw.rect(screen, light_gray, [190, 100 + index * 50, 1000, 50])
     for beat in range(len(saved_beats)):
         if beat < 10:
             beat_clicked = []
-            row_text = medium_font.render(f'{beat + 1}', True, white)
-            screen.blit(row_text, (200, 100 + beat * 50))
-            name_index_start = saved_beats[beat].index('name: ') + 6
-            name_index_end = saved_beats[beat].index(', beats:')
-            name_text = medium_font.render(saved_beats[beat][name_index_start:name_index_end], True, white)
-            screen.blit(name_text, (240, 100 + beat * 50))
+            if saved_beats[beat].startswith("name:"):
+                row_text = medium_font.render(f'{beat + 1}', True, white)
+                screen.blit(row_text, (200, 100 + beat * 50))
+                name_index_start = saved_beats[beat].index('name: ') + 6
+                name_index_end = saved_beats[beat].index(', beats:')
+                name_text = medium_font.render(saved_beats[beat][name_index_start:name_index_end], True, white)
+                screen.blit(name_text, (240, 100 + beat * 50))
         if 0 <= index < len(saved_beats) and beat == index:
             beats_index_end = saved_beats[beat].index(', bpm:')
             loaded_beats = int(saved_beats[beat][name_index_end + 8:beats_index_end])
@@ -181,6 +175,7 @@ def draw_load_menu(index):
     return exit_btn, loading_btn, entry_rect, delete_btn, loaded_info
 
 
+# Loop the Game
 run = True
 while run:
     timer.tick(fps)
@@ -195,6 +190,7 @@ while run:
     else:
         play_text2 = medium_font.render('Paused', True, dark_gray)
     screen.blit(play_text2, (70, HEIGHT - 100))
+
     # beats per minute buttons
     bpm_rect = pygame.draw.rect(screen, gray, [300, HEIGHT - 150, 200, 100], 5, 5)
     bpm_text = medium_font.render('Beats Per Minute', True, white)
@@ -207,6 +203,7 @@ while run:
     screen.blit(add_text, (520, HEIGHT - 140))
     sub_text = medium_font.render('-5', True, white)
     screen.blit(sub_text, (520, HEIGHT - 90))
+
     # beats per loop buttons
     beats_rect = pygame.draw.rect(screen, gray, [600, HEIGHT - 150, 200, 100], 5, 5)
     beats_text = medium_font.render('Beats In Loop', True, white)
@@ -303,6 +300,8 @@ while run:
                     file = open('saved_beats.txt', 'w')
                     saved_beats.append(f'\nname: {beat_name}, beats: {beats}, bpm: {bpm}, selected: {clicked}')
                     for i in range(len(saved_beats)):
+                        if saved_beats[i] == "":
+                            saved_beats.pop(i)
                         file.write(str(saved_beats[i]))
                     file.close()
                     save_menu = False
