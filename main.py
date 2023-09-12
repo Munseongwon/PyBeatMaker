@@ -166,12 +166,13 @@ def draw_load_menu(index):
     for beat in range(len(saved_beats)):
         if beat < 10:
             beat_clicked = []
-            row_text = medium_font.render(f'{beat + 1}', True, white)
-            screen.blit(row_text, (200, 100 + beat * 50))
-            name_index_start = saved_beats[beat].index('name: ') + 6
-            name_index_end = saved_beats[beat].index(', beats:')
-            name_text = medium_font.render(saved_beats[beat][name_index_start:name_index_end], True, white)
-            screen.blit(name_text, (240, 100 + beat * 50))
+            if saved_beats[beat].startswith("name:"):
+                row_text = medium_font.render(f'{beat + 1}', True, white)
+                screen.blit(row_text, (200, 100 + beat * 50))
+                name_index_start = saved_beats[beat].index('name: ') + 6
+                name_index_end = saved_beats[beat].index(', beats:')
+                name_text = medium_font.render(saved_beats[beat][name_index_start:name_index_end], True, white)
+                screen.blit(name_text, (240, 100 + beat * 50))
         if 0 <= index < len(saved_beats) and beat == index:
             beats_index_end = saved_beats[beat].index(', bpm:')
             loaded_beats = int(saved_beats[beat][name_index_end + 8:beats_index_end])
