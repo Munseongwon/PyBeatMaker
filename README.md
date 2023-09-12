@@ -29,6 +29,18 @@
 * Clear Board를 클릭하면 찍어놓은 비트 모두 삭제
 <br>
 
+> **수정 사항**
+* ride, snap 음악 파일 추가
+* 화면 너비, 높이 재조정
+* save, load 메뉴의 버튼 중앙에 배치
+* 기존 saved_beat(샘플)을 그대로 사용하면 에러 발생
+  * saved_beat에 있는 모든 데이터를 제거
+  * for i in range(beats) => for beat in range(beats)로 뚜렷한 성질을 가지고 있는 변수로 재작성
+* 저장된 비트를 저장까지는 완료 => 로드하면 프로그램이 예상치 못한 종료를 발생
+
+
 ## 시연영상
-https://youtu.be/REnAJhnGTkY
+비트 저장 및 로드: https://youtu.be/a2e4KZgpTTc
+<br>
+비트 삭제: https://youtu.be/ntkMyY2-XTE
 
