@@ -6,7 +6,7 @@
 ![Langauge:Python](https://img.shields.io/badge/Language-Python-purple) ![platform:PyGame](https://img.shields.io/badge/Platform-PyGame-pink)
 > 2022.01.17 - 2022.01.21
  
-> **Python 개인 프로젝트**
+> **Python 팀 프로젝트**
 * 런치패드로 신나는 비트를 찍는 음악 유튜버들 처럼 파이썬 개발 환경에서 음악 비트를 찍는 것도 가능하지 않을까 하는 생각에 개발
 * PyGame Package를 활용하여 제작
 * 게임 화면창의 크기는 1400 * 800으로 설정
